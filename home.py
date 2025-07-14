@@ -1,3 +1,4 @@
+# Inter-group contribution by Ahmad Khawar Team: Verified home screen layout and navigation
 import tkinter as tk
 
 def open_feedback_form():

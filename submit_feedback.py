@@ -6,6 +6,10 @@ import os
 with open("temp.txt", "r") as f:
     content = f.read().split("|")
     name, course, rating, comment = content
+    # 🔥 Inter-group contribution: Validation for empty fields
+if not name.strip() or not course.strip() or not rating.strip() or not comment.strip():
+    print("Error: One or more fields are empty. Submission aborted.")
+    exit()
 
 # Save to SQLite DB
 conn = sqlite3.connect("feedback.db")
