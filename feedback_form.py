@@ -1,4 +1,5 @@
 import tkinter as tk
+from tkinter import messagebox
 import os
 
 def submit_data():
@@ -8,7 +9,7 @@ def submit_data():
     comment = comment_entry.get("1.0", tk.END).strip()
 
     if not name or not course or not rating:
-        tk.messagebox.showwarning("Missing Info", "Please fill all fields.")
+        messagebox.showwarning("Missing Info", "Please fill all fields.")
         return
 
     with open("temp.txt", "w") as f:
@@ -20,25 +21,27 @@ root = tk.Tk()
 root.title("Feedback Form")
 root.geometry("400x400")
 
-tk.Label(root, text="Feedback Form", font=("Arial", 16)).pack(pady=10)
+# Unified font
+FONT = ("Segoe UI", 11)
 
-tk.Label(root, text="Name:").pack()
-name_entry = tk.Entry(root)
+tk.Label(root, text="Feedback Form", font=("Segoe UI", 16, "bold")).pack(pady=10)
+
+tk.Label(root, text="Name:", font=FONT).pack(pady=5)
+name_entry = tk.Entry(root, font=FONT)
 name_entry.pack()
 
-tk.Label(root, text="Course:").pack()
-course_entry = tk.Entry(root)
+tk.Label(root, text="Course:", font=FONT).pack(pady=5)
+course_entry = tk.Entry(root, font=FONT)
 course_entry.pack()
 
-tk.Label(root, text="Rating (1-5):").pack()
-rating_entry = tk.Entry(root)
+tk.Label(root, text="Rating (1-5):", font=FONT).pack(pady=5)
+rating_entry = tk.Entry(root, font=FONT)
 rating_entry.pack()
 
-tk.Label(root, text="Comments:").pack()
-comment_entry = tk.Text(root, height=5, width=30)
-comment_entry.pack()
+tk.Label(root, text="Comments:", font=FONT).pack(pady=5)
+comment_entry = tk.Text(root, height=5, width=30, font=FONT)
+comment_entry.pack(pady=5)
 
-tk.Button(root, text="Submit", command=submit_data).pack(pady=10)
+tk.Button(root, text="Submit", font=FONT, command=submit_data).pack(pady=10)
 
 root.mainloop()
-
